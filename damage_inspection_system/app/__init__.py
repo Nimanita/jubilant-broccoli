@@ -16,11 +16,15 @@ def create_app():
     jwt.init_app(app)
     bcrypt.init_app(app)
     
-    # Register blueprints
+   # Register blueprints
     from app.auth.routes import auth_bp
+    from app.inspections.routes import inspections_bp
     app.register_blueprint(auth_bp)
+    app.register_blueprint(inspections_bp)
     
     # Import models to ensure they're registered with SQLAlchemy
     from app.users.models import User
+    from app.inspections.models import Inspections
+    
     
     return app

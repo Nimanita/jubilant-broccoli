@@ -40,7 +40,7 @@ class AuthService:
             logger.error(f"Registration validation error: {e.messages}")
             return {'error': e.messages}, 400
         except Exception as e:
-            logger.error(f"Registration error: {str(e)}")
+            logger.exception(f"Registration error: {str(e)}")
             db.session.rollback()
             return {'error': 'Registration failed'}, 500
     
@@ -73,5 +73,5 @@ class AuthService:
             logger.error(f"Login validation error: {e.messages}")
             return {'error': e.messages}, 400
         except Exception as e:
-            logger.error(f"Login error: {str(e)}")
+            logger.exception(f"Login error: {str(e)}")
             return {'error': 'Login failed'}, 500
