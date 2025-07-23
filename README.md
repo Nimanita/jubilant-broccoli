@@ -273,6 +273,7 @@ Content-Type: application/json
         "status": "pending",
         "image_url": "https://example.com/damage-image.jpg",
         "inspected_by": 1,
+        "inspector_username": "john_doe",
         "created_at": "2025-01-15T11:00:00"
     }
 }
@@ -303,6 +304,7 @@ Authorization: Bearer <your-jwt-token>
         "status": "pending",
         "image_url": "https://example.com/damage-image.jpg",
         "inspected_by": 1,
+        "inspector_username": "john_doe",
         "created_at": "2025-01-15T11:00:00"
     }
 }
@@ -337,6 +339,7 @@ Content-Type: application/json
         "status": "reviewed",
         "image_url": "https://example.com/damage-image.jpg",
         "inspected_by": 1,
+        "inspector_username": "john_doe",
         "created_at": "2025-01-15T11:00:00"
     }
 }
@@ -376,6 +379,7 @@ Authorization: Bearer <your-jwt-token>
             "status": "pending",
             "image_url": "https://example.com/damage-image.jpg",
             "inspected_by": 1,
+            "inspector_username": "john_doe",
             "created_at": "2025-01-15T11:00:00"
         },
         {
@@ -385,6 +389,7 @@ Authorization: Bearer <your-jwt-token>
             "status": "reviewed",
             "image_url": "https://example.com/damage-image2.png",
             "inspected_by": 1,
+            "inspector_username": "john_doe",
             "created_at": "2025-01-15T12:00:00"
         }
     ],
