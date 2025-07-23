@@ -198,7 +198,6 @@ logs/
 log/
 
 # Config files with secrets
-config.py
 settings.py
 local_settings.py
 
