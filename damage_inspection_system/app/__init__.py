@@ -3,9 +3,13 @@ from app.extensions import db, migrate, jwt, bcrypt
 from app.config import Config
 from app.core.logger import setup_logger
 
-def create_app():
+def create_app(config=None):
     app = Flask(__name__)
-    app.config.from_object(Config)
+    if config:
+        # Use provided config (for testing)
+        app.config.update(config)
+    else:
+        app.config.from_object(Config)
     
     # Setup logging
     setup_logger()

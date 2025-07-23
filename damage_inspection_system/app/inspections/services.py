@@ -40,7 +40,7 @@ class InspectionService:
             
         except ValidationError as e:
             logger.error(f"Inspection creation validation error: {e.messages}")
-            return {'error': e.messages}, 400
+            return {'error': 'Inspection creation failed'}, 400
         except Exception as e:
             logger.exception(f"Inspection creation error: {str(e)}")
             db.session.rollback()
@@ -61,7 +61,6 @@ class InspectionService:
             logger.info(f"Inspection {inspection_id} retrieved by user {user_id}")
             
             return {
-                'message': 'Inspection retrieved successfully',
                 'inspection': inspection.to_dict()
             }, 200
             
@@ -100,7 +99,7 @@ class InspectionService:
             
         except ValidationError as e:
             logger.error(f"Inspection update validation error: {e.messages}")
-            return {'error': e.messages}, 400
+            return {'error': 'Failed to update inspection'}, 400
         except Exception as e:
             logger.exception(f"Inspection update error: {str(e)}")
             db.session.rollback()
@@ -126,14 +125,13 @@ class InspectionService:
             logger.info(f"Retrieved {len(inspections)} inspections for user {user_id}")
             
             return {
-                'message': 'Inspections retrieved successfully',
                 'inspections': [inspection.to_dict() for inspection in inspections],
                 'count': len(inspections)
             }, 200
             
         except ValidationError as e:
             logger.error(f"Inspection filter validation error: {e.messages}")
-            return {'error': e.messages}, 400
+            return {'error': 'Failed to retrieve inspections'}, 400
         except Exception as e:
             logger.exception(f"Get inspections error: {str(e)}")
             return {'error': 'Failed to retrieve inspections'}, 500

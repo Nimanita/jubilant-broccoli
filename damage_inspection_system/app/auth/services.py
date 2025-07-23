@@ -71,7 +71,7 @@ class AuthService:
             
         except ValidationError as e:
             logger.error(f"Login validation error: {e.messages}")
-            return {'error': e.messages}, 400
+            return {'error': 'Login failed'}, 400
         except Exception as e:
             logger.exception(f"Login error: {str(e)}")
             return {'error': 'Login failed'}, 500
