@@ -8,7 +8,9 @@ services:
   - type: web
     name: damage-inspection-api
     env: python
+    rootDirectory: damage_inspection_system
     buildCommand: "pip install -r requirements.txt"
+    releaseCommand: "flask db upgrade"
     startCommand: "gunicorn run:app"
     envVars:
       - key: DATABASE_URL
