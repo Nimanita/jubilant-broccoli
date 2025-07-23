@@ -16,7 +16,9 @@ class Inspections(db.Model):
     damage_report = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.Text , nullable=False)
     inspected_by = db.Column(db.Integer , db.ForeignKey('users.id'), nullable=False)
-    status = db.Column(db.Enum(InspectionStatus), default=InspectionStatus.PENDING, nullable=False)
+  # PostgreSQL uses VARCHAR for Enum, this is compatible
+    status = db.Column(db.Enum(InspectionStatus, name='inspection_status'), 
+                      default=InspectionStatus.PENDING, nullable=False)    
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     # Relationship with User model

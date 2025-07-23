@@ -1,0 +1,21 @@
+
+databases:
+  - name: damage-inspection-db
+    databaseName: damage_inspection_db
+    user: mamata_2507
+
+services:
+  - type: web
+    name: damage-inspection-api
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn run:app"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: damage-inspection-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SECRET_KEY
+        generateValue: true
